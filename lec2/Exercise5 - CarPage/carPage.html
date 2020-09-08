@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .theCar {
+            border-style: solid;
+            border-width: 1px;
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Car Page</h1>
+    <p>
+        <b>Here you can:</b>
+    </p>
+    <ul>
+        <li>add a new car, by typing producer and model name. Use a form with some buttons to do that.</li>
+        <li>refresh the list of existing cars (eventually after you have added a car). Make a button for that.</li>
+        <li>show some statistics (e.g., count) in a DIV somewhere in the page</li>
+    </ul>
+
+    <hr/>
+    <div>
+        <form id='form' method="POST">
+            <label for="producer">Producer: </label>
+            <br>
+            <input type="text" id='producer' name="producer">
+            </br>
+            <label for="model">Model: </label>
+            <br>
+            <input type="text" id='model' name="model">
+            <input type="button" id="submit" name="submit" value="submit" onclick="addCar(); countCar(); countCarProducer();" />
+        </form>
+    </div>
+    <hr/>
+    <p>Number of cars: </p>
+    <div id="carStatistics">...</div>
+    <hr/>
+    <p>Highest count of producer in current list: </p>
+    <div id="carStatistics2">...</div>
+    <hr/>
+    <div id="listOfCars">...</div>
+    <hr/>
+</body>
+<script src="addCars.js"></script>
+
+</html>
