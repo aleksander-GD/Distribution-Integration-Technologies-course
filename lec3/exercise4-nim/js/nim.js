@@ -13,8 +13,8 @@ Start with a dumb computer tactic that, e.g., always removes 2 sticks */
 // === holds page data ===
 class NimDataModel {
     constructor() {
-        /* this.player = player;
-        this.computer = computer; */
+        this.player = 0;
+        this.computer = 1;
         this.initial = 20;
         this.visualize();
     }
@@ -29,19 +29,22 @@ class NimDataModel {
 
     }
     computerSelect() {
-        return 2;
+        this.initial - 2;
     }
 
     gameover() {
-
+        if (this.stickcount() < 3 && ) {
+            return true;
+        }
+        return false;
     }
 
     visualize() {
         let sticks = "";
         for (let x = 0; x < this.initial; x++) {
-            sticks += "/";
+            sticks += "  /  ";
         }
-        $("#visualization").text(this.initial).append("<h3>" + sticks + "</h3>")
+        $("#visualization").text(this.initial).append("<h1>" + sticks + "</h1>")
     }
 
 }
@@ -55,12 +58,28 @@ $(document).ready(() => {
     myData.visualize();
     // === setup UI ===============================
     $("#three").addClass("button").click(event => {
-        myData.remove(3);
+
+        if (myData.gameover()) {
+            $(this).prop("disabled", true);
+        } else {
+            myData.remove(3);
+            myData.computerSelect();
+        }
     });
     $("#two").addClass("button").click(event => {
-        myData.remove(2);
+
+        if (myData.gameover()) {
+            $(this).prop("disabled", true);
+
+        } else {
+            myData.remove(2);
+            myData.computerSelect();
+        }
     });
     $(".button").mousedown(event => { // prevent selection
         event.preventDefault();
+    });
+    $("#reset").addClass("button").click(event => {
+        location.reload();
     });
 });
