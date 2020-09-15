@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise3 - carPage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .theCar {
+            border-style: solid;
+            border-width: 1px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Car Page</h1>
+    <p><b>Here you can:</b></p>
+    <ul>
+        <li>add a new car, by typing producer and model name.</li>
+        <li>the list of existing cars refreshes automatically each time you add a new car.</li>
+        <li>Try to reopen the page, and you should still see the cars you added before!</li>
+    </ul>
+    <hr/>
+    <div>The input form
+        <br/>Car Producer: <input type="text" id="carProducer" value="">
+        <br/>Car Name: <input type="text" id="carName" value="">
+        <button type="button" id="addButton">[add]</button>
+    </div>
+    <hr/>
+    <div id="listOfCars">...</div>
+    <hr/>
+    <p><button type="button" id="resetButton">[resetAllCars]</button></p>
+</body>
+<script src="carscript.js"></script>
+
+</html>
