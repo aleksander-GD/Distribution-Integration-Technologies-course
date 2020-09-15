@@ -13,14 +13,16 @@ Start with a dumb computer tactic that, e.g., always removes 2 sticks */
 // === holds page data ===
 class NimDataModel {
     constructor() {
-        this.player = 0;
-        this.computer = 1;
+        /* this.player = 0;
+        this.computer = 1; */
+        this.state = null;
         this.initial = 20;
         this.visualize();
     }
 
     remove(n) {
         this.initial -= n;
+        this.state = 0;
         this.visualize();
     }
 
@@ -29,14 +31,19 @@ class NimDataModel {
 
     }
     computerSelect() {
-        this.initial - 2;
+        setTimeout(this.initial -= 2, 2000);
+        this.state = 1;
     }
 
     gameover() {
-        if (this.stickcount() < 3 && ) {
-            return true;
+        console.log(this.state);
+        if (this.stickcount() < 3 && this.state == 0) {
+            return 1;
+        } else if (this.stickcount() < 3 && this.state == 1) {
+            return 0;
+        } else {
+            return -1;
         }
-        return false;
     }
 
     visualize() {
@@ -54,22 +61,32 @@ class NimDataModel {
 
 $(document).ready(() => {
     // === initialization of data =================
-    let myData = new NimDataModel(new NimDataModel, new NimDataModel);
+    let myData = new NimDataModel();
     myData.visualize();
     // === setup UI ===============================
     $("#three").addClass("button").click(event => {
 
-        if (myData.gameover()) {
+        if (myData.gameover() == 1) {
             $(this).prop("disabled", true);
+            $("#result").text("Computer won")
+        } else if (myData.gameover() == 0) {
+            $(this).prop("disabled", true);
+            $("#result").text("You won")
+
         } else {
             myData.remove(3);
             myData.computerSelect();
+
         }
     });
     $("#two").addClass("button").click(event => {
 
-        if (myData.gameover()) {
+        if (myData.gameover() == 1) {
             $(this).prop("disabled", true);
+            $("#result").text("Computer won")
+        } else if (myData.gameover() == 0) {
+            $(this).prop("disabled", true);
+            $("#result").text("You won")
 
         } else {
             myData.remove(2);
