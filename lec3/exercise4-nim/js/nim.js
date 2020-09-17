@@ -22,27 +22,32 @@ class NimDataModel {
 
     remove(n) {
         this.initial -= n;
-        this.state = 0;
         this.visualize();
     }
 
     stickcount() {
         return this.initial;
+    }
 
+    setState(n) {
+        this.state = n;
     }
     computerSelect() {
-        setTimeout(this.initial -= 2, 2000);
-        this.state = 1;
+        if (this.stickcount() < 3) {
+            return $("#result").text("You won");
+        }
+        this.initial -= Math.random() < 0.5 ? 2 : 3;;
+        this.visualize();
     }
 
     gameover() {
         console.log(this.state);
-        if (this.stickcount() < 3 && this.state == 0) {
-            return 1;
-        } else if (this.stickcount() < 3 && this.state == 1) {
-            return 0;
-        } else {
-            return -1;
+        if (this.stickcount() < 3) {
+            if (this.state == 1) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -56,9 +61,6 @@ class NimDataModel {
 
 }
 
-
-
-
 $(document).ready(() => {
     // === initialization of data =================
     let myData = new NimDataModel();
@@ -68,17 +70,21 @@ $(document).ready(() => {
 
         if (myData.gameover() == 1) {
             $(this).prop("disabled", true);
-            $("#result").text("Computer won")
+            $("#result").text("Computer won");
         } else if (myData.gameover() == 0) {
             $(this).prop("disabled", true);
-            $("#result").text("You won")
-
+            $("#result").text("You won");
         } else {
             myData.remove(3);
-            myData.computerSelect();
+            myData.setState(0);
+            setTimeout(() => {
+                myData.computerSelect();
+                myData.setState(1);
+            }, 2000);;
 
         }
     });
+
     $("#two").addClass("button").click(event => {
 
         if (myData.gameover() == 1) {
@@ -87,10 +93,14 @@ $(document).ready(() => {
         } else if (myData.gameover() == 0) {
             $(this).prop("disabled", true);
             $("#result").text("You won")
-
         } else {
             myData.remove(2);
-            myData.computerSelect();
+            myData.setState(0);
+            setTimeout(() => {
+                myData.computerSelect();
+                myData.setState(1);
+            }, 2000);;
+
         }
     });
     $(".button").mousedown(event => { // prevent selection
