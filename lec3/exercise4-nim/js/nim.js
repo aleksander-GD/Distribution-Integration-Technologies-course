@@ -80,7 +80,7 @@ $(document).ready(() => {
             setTimeout(() => {
                 myData.computerSelect();
                 myData.setState(1);
-            }, 2000);;
+            }, 2000);
 
         }
     });

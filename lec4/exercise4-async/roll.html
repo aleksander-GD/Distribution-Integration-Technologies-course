@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <p>See console (and try reloading repeatedly)</p>
+    <script>
+        // an async dice roller, returning a promise
+        async function roll() {
+            await new Promise(r => setTimeout(r, 1000));
+            return 1 + Math.floor(6 * Math.random());
+        }
+
+        //await only allowed inside async function
+        async function rollPair() {
+            let rolling = await roll();
+            rolling = await roll();
+            return rolling.toString();
+        }
+
+        rollPair().then(console.log);
+    </script>
+</body>
+
+</html>
