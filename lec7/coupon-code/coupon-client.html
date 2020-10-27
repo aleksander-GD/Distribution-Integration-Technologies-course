@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exercise2 - coupon winner</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h2>Win a security medal!</h2>
+    <div>
+        Please enter your details to win:
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+            <br/>
+            <label for="coupon-code">Coupon code:</label>
+            <input type="text" id="coupon-code">
+            <br/>
+            <button id="button">Submit</button>
+        </form>
+    </div>
+    <div id="no-win" style="display: none;">
+        <!-- Sorry, you didn't win this time 🙁 -->
+    </div>
+    <div id="you-won" style="display: none;">
+        <!--  Congratulations! You're a winner! 🎉 -->
+    </div>
+    <script src="coupon-client.js"></script>
+</body>
+
+</html>

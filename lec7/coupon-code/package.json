@@ -1,0 +1,9 @@
+{
+  "name": "coupon-code-project",
+  "description": "A simple insecure coupon-code service built with express",
+  "version": "0.0.1",
+  "main": "coupon-server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
