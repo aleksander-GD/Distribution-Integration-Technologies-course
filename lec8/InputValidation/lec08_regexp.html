@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function validDate(input) {
+            var fullname = document.getElementById("date");
+            var regEx = new RegExp(/^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g);
+            // [0-9]{2}[/][0-9]{2}[/][0-9]{4}
+            if (regEx.test(fullname.value)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        window.addEventListener("load", () => {
+            let dateInput = document.getElementById("date");
+            dateInput.addEventListener("keyup", () => {
+                if (validDate(dateInput.value)) {
+                    dateInput.style.background = "lightgreen";
+                } else {
+                    dateInput.style.background = "red";
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <p>Please enter a date on the format dd/mm/yyyy:</p>
+    <form>
+        <label for="date">Date:</label>
+        <input type="text" id="date">
+    </form>
+</body>
+
+</html>
