@@ -14,7 +14,7 @@
             ws.onmessage = event => {
                 let json = JSON.parse(event.data);
                 let div = document.createElement("div");
-                div.textContent = json.msg; //bad idea
+                div.innerHTML = json.msg; //bad idea
                 document.body.appendChild(div);
             };
             button.addEventListener("click", () => {

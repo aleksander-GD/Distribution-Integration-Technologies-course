@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+    Used in input field:
+
+    <script>
+  alert("This script always runs.");
+  script01 = true;
+</script>
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+ onload="if(typeof script01==='undefined') eval(this.previousElementSibling.innerHTML)">
+ 
+-->
+
+<head>
+    <script>
+        window.addEventListener("load", () => {
+            const ws = new WebSocket("ws://localhost:8080/");
+            let input = document.getElementById("input");
+            let button = document.getElementById("button");
+
+            ws.onopen = () => console.log("connected");
+            ws.onclose = e => console.log("disconnected", e.reason);
+            ws.onerror = e => console.log("Something went wrong:", e);
+            ws.onmessage = event => {
+                let json = JSON.parse(event.data);
+                let div = document.createElement("div");
+                div.innerHTML = json.msg; //bad idea
+                document.body.appendChild(div);
+            };
+            button.addEventListener("click", () => {
+                ws.send(input.value);
+                input.value = "";
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <button id="button">Send</button>
+    <hr>
+</body>
+
+</html>
