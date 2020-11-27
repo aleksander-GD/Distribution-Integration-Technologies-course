@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="module">
+    import {change} from './change.mjs';
+
+    function convert(amount) {
+       let c = change(amount);
+       document.getElementById("change").innerText = c.toString();
+       console.log("change for ", amount, " is ", c);
+    }
+
+    window.addEventListener("load", () => {
+      document.forms[0].onsubmit = () => false;
+      let inputField = document.getElementById("amountinput");
+      inputField.addEventListener("keyup", e => {
+          e.preventDefault();
+          convert(parseInt(inputField.value));
+      });
+    })
+</script>
+</head>
+<body>
+  For output: See View -> Developer -> JavaScript Console
+  <hr>
+    <form>
+        Amount: 
+        <input type="text" id="amountinput" value="0">
+    </form>
+    Change: <span id="change"></span>
+</body>
+</html>

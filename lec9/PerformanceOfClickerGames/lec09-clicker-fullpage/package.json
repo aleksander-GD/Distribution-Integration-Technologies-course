@@ -1,0 +1,11 @@
+{
+  "author": "Jan Midtgaard",
+  "name": "clicker-fullpage",
+  "description": "Clicker server performing full page reload",
+  "version": "1.0.0",
+  "main": "clicker-server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "license": "Public Domain"
+}

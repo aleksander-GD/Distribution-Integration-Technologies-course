@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body   { background-color: pink; }
+        h1     { font-family: Arial, Helvetica, sans-serif; }
+        button { background-color: lightsalmon; }
+        div {
+            border: 3px solid black;
+            margin: 10px;
+            padding: 10px;
+            line-height: 25px;
+            width: 50%;
+            text-align: center;
+            background-color: lightgoldenrodyellow;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", () => {
+            let countElem = document.getElementById("count");
+            let clickbutton = document.getElementById("clickbutton");
+            clickbutton.addEventListener("click", async e => {
+                e.preventDefault();
+                let resp = await fetch("http://localhost:8080", { method : "POST" });
+                let json = await resp.json();
+                let count = json.count;
+                if (count%20 == 0) countElem.innerText = "🎉 " + count + " 🎉";
+                else countElem.innerText = count;
+            })
+        })
+    </script>
+    <body>
+        <h1>Welcome to the amazing clicker game!</h1>
+        <div>
+            Count is <span id="count">1</span>
+            <form>
+                <button id="clickbutton">Click me!</button>
+            </form>
+        </div>
+    </body>
+</html>

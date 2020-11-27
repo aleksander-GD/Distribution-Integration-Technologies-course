@@ -1,0 +1,15 @@
+{
+    "name": "change",
+    "version": "0.0.1",
+    "scripts": {
+        "test": "mocha test.mjs"
+    },
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "mocha": "~8.1.3",
+        "esm": "^3.2.25",
+        "fast-check": "2.3.0"
+    },
+    "devDependencies": {}
+}

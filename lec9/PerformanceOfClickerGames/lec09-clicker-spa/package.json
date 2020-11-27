@@ -1,0 +1,11 @@
+{
+  "author": "Jan Midtgaard",
+  "name": "clicker-spa",
+  "description": "Clicker server for single-page application",
+  "version": "1.0.0",
+  "main": "clicker-server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "license": "Public Domain"
+}
